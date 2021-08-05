@@ -6,6 +6,9 @@ public class Wool : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D _rigidbody2D;
+
+    // 羊毛の売却価格
+    public int price = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +23,12 @@ public class Wool : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    // 羊毛の売却処理
+    public void Shell(Wallet wallet)
+    {
+        wallet.money += price;
+        Destroy(gameObject);
     }
 }
