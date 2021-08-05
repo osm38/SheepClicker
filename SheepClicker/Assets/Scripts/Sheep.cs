@@ -17,6 +17,12 @@ public class Sheep : MonoBehaviour
     // 移動速度
     private float moveSpeed;
 
+    // 羊の初期データ
+    public SheepData sheepData;
+
+    // 羊毛の量
+    private int woolCnt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,8 +42,18 @@ public class Sheep : MonoBehaviour
 
     private void Shaving()
     {
-        sheepRenderer.sprite = cutSheepSprite;
+        if (woolCnt <= 0) return; // もう刈り取れる羊毛はないので何もしない。
+        // 今羊に残っている羊毛と30-40%の羊毛のうち少ない量を刈り取る。
+        var shavingWool = (int)Mathf.Min(woolCnt, sheepData.woolCnt * Random.Range(0.3f, 0.4f));
+
+        woolCnt -= shavingWool; // 今回刈り取る分を保持している羊毛から減らし
+        if(woolCnt <= 0) // 0になったようなら、
+        {
+            sheepRenderer.sprite = cutSheepSprite; // 画像をカットされたものに差し替え
+            sheepRenderer.color = Color.white; // 毛はもうないので色を白に戻す。
+        }
         var wool = Instantiate(woolPrefab, transform.position, transform.rotation);
+        // TODO Woolオブジェクトに今回刈り取った羊毛と色情報を渡す。
     }
 
     private void OnMouseOver()
@@ -54,5 +70,10 @@ public class Sheep : MonoBehaviour
         transform.position = new Vector3(5, Random.Range(0.0f,4.0f), 0);
         //移動速度をセット
         moveSpeed = -Random.Range(1.0f, 2.0f);
+
+        // 色のセット
+        sheepRenderer.color = sheepData.color;
+        // 羊毛の量
+        woolCnt = sheepData.woolCnt;
     }
 }
