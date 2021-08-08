@@ -78,6 +78,7 @@ public class SheepButton : MonoBehaviour
         var price = GetPrice();
         wallet.money -= price; // 購入した分所持金からマイナス
         currentCnt++; // 現在の頭数をインクリメント
+        SoundManager.Instance.Play("メー");
     }
 
     // 現在の羊の金額を返却
