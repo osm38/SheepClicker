@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c121dc3b74fecd4c98ca09e04be3e73, type: 3}
-  m_Name: Sheep2 2
+  m_Name: Sheep4
   m_EditorClassIdentifier: 
-  color: {r: 0.9339623, g: 0.629984, b: 0.8705805, a: 1}
-  basePrice: 100
-  extendPrice: 50
+  color: {r: 0.9764706, g: 1, b: 0.5254902, a: 1}
+  basePrice: 12000
+  extendPrice: 6000
   maxCount: 10
-  woolCnt: 40
+  woolCnt: 5000
