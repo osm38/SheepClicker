@@ -53,7 +53,9 @@ public class Sheep : MonoBehaviour
             sheepRenderer.color = Color.white; // 毛はもうないので色を白に戻す。
         }
         var wool = Instantiate(woolPrefab, transform.position, transform.rotation);
-        // TODO Woolオブジェクトに今回刈り取った羊毛と色情報を渡す。
+        // Woolオブジェクトに今回刈り取った羊毛と色情報を渡す。
+        wool.price = shavingWool;
+        wool.woolColor = sheepData.color;
     }
 
     private void OnMouseOver()

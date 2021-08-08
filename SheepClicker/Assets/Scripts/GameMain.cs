@@ -27,7 +27,7 @@ public class GameMain : MonoBehaviour
         var wools = FindObjectsOfType<Wool>();
         foreach(var wool in wools)
         {
-            wool.Shell(wallet);
+            wool.Sell(wallet);
         }
     }
 }
